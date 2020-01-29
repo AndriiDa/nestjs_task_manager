@@ -19,12 +19,13 @@ export class TasksController {
 
   @Get()
   getTasks(@Query() filterDTO: GetTaskFilterDTO): Task[] {
-    if(Object.keys(filterDTO).length){
+    if (Object.keys(filterDTO).length) {
+      console.log(filterDTO);
       return this.tasksService.getTaskWithFilters(filterDTO);
-    }else{
+    } else {
+      console.log(this.tasksService.getAllTasks());
       return this.tasksService.getAllTasks();
     }
-    
   }
 
   @Get("/:id")

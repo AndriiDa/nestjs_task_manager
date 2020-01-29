@@ -9,23 +9,26 @@ export class TasksService {
   private tasks: Task[] = [];
 
   getAllTasks(): Task[] {
+    console.log(this.tasks);
     return this.tasks;
   }
 
-  getTaskWithFilters(filterDTO: GetTaskFilterDTO): Task[]{
+  getTaskWithFilters(filterDTO: GetTaskFilterDTO): Task[] {
     const { status, search } = filterDTO;
 
+    console.log(this.getAllTasks());
     let tasks = this.getAllTasks();
 
-    if(status){
-      tasks = tasks.filter(task => task.status === status)
+    if (status) {
+      tasks = tasks.filter(task => task.status === status);
     }
 
-    if(search){
+    if (search) {
+      console.log(tasks);
       tasks = tasks.filter(task => {
-        task.title.includes(search) || 
-        task.description.includes(search)
-      })
+        console.log(task.title, task.description);
+        return task.title.includes(search) || task.description.includes(search);
+      });
     }
     return tasks;
   }
