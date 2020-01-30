@@ -12,8 +12,8 @@ import {
 } from "@nestjs/common";
 import { TasksService } from "./tasks.service";
 import { Task, TaskStatus } from "./task.model";
-import { CreateTaskDTO } from "src/dto/create-task.dto";
-import { GetTaskFilterDTO } from "src/dto/get-task-filter.dto";
+import { CreateTaskDTO } from "src/tasks/dto/create-task.dto";
+import { GetTaskFilterDTO } from "src/tasks/dto/get-task-filter.dto";
 
 @Controller("tasks")
 export class TasksController {
