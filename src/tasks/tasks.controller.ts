@@ -21,7 +21,7 @@ export class TasksController {
   constructor(private tasksService: TasksService) {}
 
   @Get()
-  getTasks(@Query() filterDTO: GetTaskFilterDTO): Task[] {
+  getTasks(@Query(ValidationPipe) filterDTO: GetTaskFilterDTO): Task[] {
     if (Object.keys(filterDTO).length) {
       console.log(filterDTO);
       return this.tasksService.getTaskWithFilters(filterDTO);
@@ -51,7 +51,7 @@ export class TasksController {
   updateTaskStatus(
     @Param("id") id: string,
     @Body("status", TaskStatusValidationPipe) status: TaskStatus
-  ):Task {
+  ): Task {
     return this.tasksService.updateTaskStatus(id, status);
   }
 }
